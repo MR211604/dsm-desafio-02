@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Trip</string>
+    <string name="login_title">Bienvenido a Trip</string>
+    <string name="register_title">Crea tu cuenta</string>
+    <string name="email_hint">Correo electrónico</string>
+    <string name="password_hint">Contraseña</string>
+    <string name="login_button">Ingresar</string>
+    <string name="register_button">Registrarse</string>
+    <string name="no_account">¿No tienes una cuenta?</string>
+    <string name="already_have_account">¿Ya tienes una cuenta?</string>
+    <string name="register_link">Regístrate</string>
+    <string name="login_link">Ingresa aquí</string>
+</resources>

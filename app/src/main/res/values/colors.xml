@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- Voyager colors -->
+    <color name="primary">#FF3E50C3</color>
+    <color name="primary_container">#FF596ADD</color>
+    
+    <!-- Light Lavender secondary tokens -->
+    <color name="secondary">#FFD1C4E9</color>
+    <color name="secondary_container">#FFE4D7FD</color>
+    <color name="on_secondary_container">#FF1A1B22</color>
+    
+    <color name="surface">#FFFBF8FF</color>
+    <color name="on_surface">#FF1A1B22</color>
+    
+    <color name="surface_container_low">#FFF4F2FD</color>
+    <color name="surface_container_high">#FFF0ECF8</color>
+    <color name="surface_container_highest">#FFE3E1EB</color>
+    <color name="surface_container_lowest">#FFFFFFFF</color>
+
+    <color name="text_muted">#FF6E6E73</color>
+</resources>

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_dialog_rounded"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="12dp"
+        android:src="@drawable/ic_delete"
+        app:tint="#D32F2F"
+        android:background="@drawable/bg_circle_error_light" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="¿Borrar destino?"
+        android:textSize="22sp"
+        android:textColor="@color/on_surface"
+        android:fontFamily="@font/plus_jakarta_sans_bold" />
+
+    <TextView
+        android:id="@+id/tvDialogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textSize="14sp"
+        android:textColor="#5F6368"
+        android:fontFamily="@font/plus_jakarta_sans" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnConfirmDelete"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_btn_error_filled"
+        android:text="Sí, borrarlo"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:fontFamily="@font/plus_jakarta_sans_bold" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnCancelDelete"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bg_btn_cancel"
+        android:text="Cancelar"
+        android:textAllCaps="false"
+        android:textColor="@color/on_surface"
+        android:textSize="16sp"
+        android:fontFamily="@font/plus_jakarta_sans_bold" />
+
+</LinearLayout>

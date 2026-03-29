@@ -1,7 +1,15 @@
 package com.example.desafio02dsm
 
+import android.app.Dialog
 import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableStringBuilder
+import android.text.style.StyleSpan
+import android.view.Window
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
@@ -10,6 +18,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatButton
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import android.graphics.Typeface
 
 class EditDestinationActivity : AppCompatActivity() {
 
@@ -57,8 +66,36 @@ class EditDestinationActivity : AppCompatActivity() {
 
         val btnDelete = findViewById<AppCompatButton>(R.id.btnDelete)
         btnDelete.setOnClickListener {
-            // Eliminar y regresar
-            finish()
+            val dialog = Dialog(this)
+            dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+            dialog.setContentView(R.layout.dialog_delete_destination)
+            dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            dialog.window?.setLayout((resources.displayMetrics.widthPixels * 0.90).toInt(), ViewGroup.LayoutParams.WRAP_CONTENT)
+
+            val tvMessage = dialog.findViewById<TextView>(R.id.tvDialogMessage)
+            val btnConfirm = dialog.findViewById<AppCompatButton>(R.id.btnConfirmDelete)
+            val btnCancel = dialog.findViewById<AppCompatButton>(R.id.btnCancelDelete)
+
+            val fullText = "Esto eliminará permanentemente $destName y todas las reservas asociadas de tu itinerario."
+            val spannable = SpannableStringBuilder(fullText)
+            val start = fullText.indexOf(destName)
+            if (start != -1) {
+                // Apply bold style directly, using the font family from XML for the text.
+                spannable.setSpan(StyleSpan(Typeface.BOLD), start, start + destName.length, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+            }
+            tvMessage.text = spannable
+
+            btnConfirm.setOnClickListener {
+                dialog.dismiss()
+                // Logica de borrar vacia
+                finish()
+            }
+
+            btnCancel.setOnClickListener {
+                dialog.dismiss()
+            }
+
+            dialog.show()
         }
     }
 }

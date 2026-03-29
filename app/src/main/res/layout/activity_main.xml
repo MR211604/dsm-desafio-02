@@ -6,6 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/surface"
     tools:context=".MainActivity">
 
@@ -14,7 +15,7 @@
         android:id="@+id/appBarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#D9FBF8FF"
+        android:background="@android:color/transparent"
         app:elevation="0dp"
         android:theme="@style/Theme.Material3.DayNight.NoActionBar">
 
@@ -29,27 +30,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <ImageView
-                    android:id="@+id/btnMenu"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:padding="12dp"
-                    android:src="@drawable/ic_menu"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"/>
-
                 <TextView
+                    android:id="@+id/tvTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/plus_jakarta_sans_bold"
                     android:text="@string/app_name"
                     android:textColor="@color/primary"
                     android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:textStyle="italic"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/btnMenu"
-                    android:layout_marginStart="8dp"/>
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/btnSearch"
@@ -57,9 +50,9 @@
                     android:layout_height="48dp"
                     android:padding="12dp"
                     android:src="@drawable/ic_search"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/btnMore"/>
+                    app:layout_constraintEnd_toStartOf="@id/btnMore"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/btnMore"
@@ -67,9 +60,9 @@
                     android:layout_height="48dp"
                     android:padding="12dp"
                     android:src="@drawable/ic_more_vert"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
@@ -88,22 +81,24 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="24dp"
                 android:layout_marginEnd="20dp"
-                android:text="CURATED FOR YOU"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:letterSpacing="0.1"
+                android:text="ORGANIZADO POR TI"
                 android:textColor="@color/primary"
                 android:textSize="12sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.1" />
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="20dp"
-                android:text="Explore Places"
+                android:fontFamily="@font/plus_jakarta_sans_bold"
+                android:text="Explorar destinos"
                 android:textColor="@color/on_surface"
                 android:textSize="36sp"
                 android:textStyle="bold" />
@@ -133,12 +128,13 @@
         android:layout_gravity="bottom|end"
         android:layout_marginEnd="20dp"
         android:layout_marginBottom="100dp"
-        app:backgroundTint="@color/primary"
+        app:backgroundTint="#829EFD"
         app:tint="@color/white"
         android:src="@drawable/ic_add" 
         app:elevation="10dp"/>
 
     <!-- Bottom Navigation Layer -->
+    <!--
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationView"
         android:layout_width="match_parent"
@@ -150,5 +146,6 @@
         app:itemTextColor="@color/color_bottom_nav"
         app:labelVisibilityMode="labeled"
         app:menu="@menu/bottom_nav_menu" />
+        -->
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -1,10 +1,11 @@
 package com.example.desafio02dsm
 
 data class Destination(
-    val name: String,
-    val country: String,
-    val price: String,
-    val rating: String,
-    val description: String,
-    val colorRes: Int
+    var id: String = "",
+    var name: String = "",
+    var country: String = "",
+    var duration: String = "",
+    var highlights: String = "",
+    var imageBase64: String = "",
+    var price: String = ""
 )

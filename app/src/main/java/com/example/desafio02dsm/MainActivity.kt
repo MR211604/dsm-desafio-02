@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import android.util.Log
 
 class MainActivity : AppCompatActivity() {
 
@@ -20,6 +22,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var fabAdd: FloatingActionButton
     private lateinit var btnMore: ImageView
     private val destinationList = mutableListOf<Destination>()
+    private lateinit var adapter: DestinationAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,11 @@ class MainActivity : AppCompatActivity() {
         fabAdd = findViewById(R.id.fabAdd)
         btnMore = findViewById(R.id.btnMore)
 
-        setupRecyclerView()
+        adapter = DestinationAdapter(destinationList)
+        rvDestinations.layoutManager = LinearLayoutManager(this)
+        rvDestinations.adapter = adapter
+
+        fetchDestinationsFromFirebase()
 
         fabAdd.setOnClickListener {
             val intent = Intent(this, AddDestinationActivity::class.java)
@@ -68,13 +75,28 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupRecyclerView() {
-        destinationList.add(Destination("Santorini", "GREECE", "$1,850", "4.9", "Experience the iconic caldera views and whitewashed villages of the Cyclades. Perfect for romantic sunsets.", R.color.primary))
-        destinationList.add(Destination("Ubud, Bali", "INDONESIA", "$1,200", "4.8", "Immerse yourself in the cultural heart of Bali. Surrounded by emerald rice paddies and sacred temples.", R.color.secondary))
-        destinationList.add(Destination("Kyoto", "JAPAN", "$2,400", "5.0", "A timeless journey through imperial history. Discover zen gardens and traditional tea ceremonies.", R.color.primary_container))
+    private fun fetchDestinationsFromFirebase() {
+        val db = FirebaseFirestore.getInstance()
+        db.collection("destinations")
+            .addSnapshotListener { result, exception ->
+                if (exception != null) {
+                    Toast.makeText(this, "Error load destinations: ${exception.message}", Toast.LENGTH_SHORT).show()
+                    return@addSnapshotListener
+                }
 
-        val adapter = DestinationAdapter(destinationList)
-        rvDestinations.layoutManager = LinearLayoutManager(this)
-        rvDestinations.adapter = adapter
+                if (result != null) {
+                    destinationList.clear()
+                    for (document in result) {
+                        try {
+                            val destination = document.toObject(Destination::class.java)
+                            destination.id = document.id
+                            destinationList.add(destination)
+                        } catch (e: Exception) {
+                            Log.e("MainActivity", "Error parsing destination", e)
+                        }
+                    }
+                    adapter.notifyDataSetChanged()
+                }
+            }
     }
 }
